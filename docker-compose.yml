@@ -1,0 +1,43 @@
+﻿version: "3.9"
+
+services:
+  postgres-db:
+    image: postgres:latest
+    container_name: postgres-anomalies
+    environment:
+      - POSTGRES_DB=anomalies
+      - POSTGRES_USER=test
+      - POSTGRES_PASSWORD=VeryStrongPassword123!
+    volumes:
+      - ./init/init-postgres-db.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5401:5432"
+
+  mssql-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-anomalies
+    ports:
+      - "1401:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=VeryStrongPassword123!
+    restart: always
+    healthcheck:
+      test: /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P VeryStrongPassword123! -C -Q 'SELECT 1'
+      start_period: 5s
+      interval: 5s
+      timeout: 3s
+      retries: 3
+  mssql-db.configurator:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: mssql-anomalies.configurator
+    volumes:
+      - ./init/init-mssql-db.sql:/init.sql
+    depends_on:
+      mssql-db:
+        condition: service_healthy
+    command: >
+      bash -c '
+      /opt/mssql-tools18/bin/sqlcmd -S mssql-db -U sa -P VeryStrongPassword123! -C -d master -i init.sql;
+      echo "MSSQL DB is configured!";
+      '
