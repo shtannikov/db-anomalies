@@ -3,6 +3,11 @@ PRINT 'Database "anomalies" created successfully.';
 
 GO
 
+ALTER DATABASE anomalies
+SET ALLOW_SNAPSHOT_ISOLATION ON
+
+GO
+
 CREATE LOGIN test WITH PASSWORD = 'VeryStrongPassword123!';
 PRINT 'Login "test" created successfully.';
 

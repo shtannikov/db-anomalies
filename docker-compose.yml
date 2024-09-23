@@ -9,7 +9,7 @@ services:
       - POSTGRES_USER=test
       - POSTGRES_PASSWORD=VeryStrongPassword123!
     volumes:
-      - ./init/init-postgres-db.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./__init/init-postgres-db.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5401:5432"
 
@@ -32,7 +32,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: mssql-anomalies.configurator
     volumes:
-      - ./init/init-mssql-db.sql:/init.sql
+      - ./__init/init-mssql-db.sql:/init.sql
     depends_on:
       mssql-db:
         condition: service_healthy
