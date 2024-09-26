@@ -8,14 +8,10 @@
       - POSTGRES_PASSWORD=VeryStrongPassword123!
     volumes:
       - ./__init/init-postgres-db.sql:/docker-entrypoint-initdb.d/init.sql
-    ports:
-      - "5401:5432"
 
   mssql-db:
     image: mcr.microsoft.com/mssql/server:2022-latest
     container_name: mssql-anomalies
-    ports:
-      - "1401:1433"
     environment:
       - ACCEPT_EULA=Y
       - SA_PASSWORD=VeryStrongPassword123!
