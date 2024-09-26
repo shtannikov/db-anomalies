@@ -1,6 +1,4 @@
-﻿version: "3.9"
-
-services:
+﻿services:
   postgres-db:
     image: postgres:latest
     container_name: postgres-anomalies
@@ -41,3 +39,15 @@ services:
       /opt/mssql-tools18/bin/sqlcmd -S mssql-db -U sa -P VeryStrongPassword123! -C -d master -i init.sql;
       echo "MSSQL DB is configured!";
       '
+
+  dbeaver:
+    image: dbeaver/cloudbeaver:latest
+    container_name: dbeaver
+    ports:
+      - "8901:8978"
+    volumes:
+      - ./__init/dbeaver/initial-data-sources.json:/opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
+      - ./__init/dbeaver/.cloudbeaver.runtime.json:/opt/cloudbeaver/workspace/.data/.cloudbeaver.runtime.conf
+    depends_on:
+      - postgres-db
+      - mssql-db

@@ -1,0 +1,76 @@
+{
+  "server": {
+    "serverName": "Cloudbeaver-DB-Anomalies",
+    "expireSessionAfterPeriod": 604800000,
+    "productSettings": {
+      "core.localization.localization": "en",
+      "core.theming.theme": "light",
+      "plugin.log-viewer.disabled": false,
+      "plugin.log-viewer.logBatchSize": 1000.0,
+      "plugin.log-viewer.maxFailedRequests": 3.0,
+      "plugin.log-viewer.maxLogRecords": 2000.0,
+      "plugin.log-viewer.refreshTimeout": 3000.0,
+      "plugin.sql-editor.autoSave": true,
+      "plugin.sql-editor.disabled": false,
+      "plugin.sql-editor.maxFileSize": 10240.0,
+      "sql.proposals.insert.table.alias": "PLAIN"
+    },
+    "database": {
+      "driver": "${CLOUDBEAVER_DB_DRIVER:h2_embedded_v2}",
+      "url": "${CLOUDBEAVER_DB_URL:jdbc:h2:/opt/cloudbeaver/workspace/.data/cb.h2v2.dat}",
+      "initialDataConfiguration": "${CLOUDBEAVER_DB_INITIAL_DATA:conf/initial-data.conf}",
+      "backupEnabled": "${CLOUDBEAVER_DB_BACKUP_ENABLED:true}",
+      "pool": {
+        "minIdleConnections": "${CLOUDBEAVER_DB_MIN_IDLE_CONNECTIONS:4.0}",
+        "maxIdleConnections": "${CLOUDBEAVER_DB_MAX_IDLE_CONNECTIONS:10.0}",
+        "maxConnections": "${CLOUDBEAVER_DB_MAX_CONNECTIONS:100.0}",
+        "validationQuery": "${CLOUDBEAVER_DB_VALIDATION_QUERY:SELECT 1}"
+      }
+    },
+    "sm": {
+      "passwordPolicy": {
+        "minLength": 0,
+        "minNumberCount": 0,
+        "minSymbolCount": 0,
+        "requireMixedCase": false
+      }
+    }
+  },
+  "app": {
+    "anonymousAccessEnabled": true,
+    "supportsCustomConnections": true,
+    "publicCredentialsSaveEnabled": true,
+    "adminCredentialsSaveEnabled": true,
+    "enableReverseProxyAuth": false,
+    "forwardProxy": false,
+    "linkExternalCredentialsWithUser": true,
+    "redirectOnFederatedAuth": false,
+    "resourceManagerEnabled": true,
+    "showReadOnlyConnectionInfo": true,
+    "grantConnectionsAccessToAnonymousTeam": true,
+    "systemVariablesResolvingEnabled": true,
+    "resourceQuotas": {
+      "dataExportFileSizeLimit": "${CLOUDBEAVER_RESOURCE_QUOTA_DATA_EXPORT_FILE_SIZE_LIMIT:10000000}",
+      "resourceManagerFileSizeLimit": "${CLOUDBEAVER_RESOURCE_QUOTA_RESOURCE_MANAGER_FILE_SIZE_LIMIT:500000}",
+      "sqlMaxRunningQueries": "${CLOUDBEAVER_RESOURCE_QUOTA_SQL_MAX_RUNNING_QUERIES:100}",
+      "sqlResultSetRowsLimit": "${CLOUDBEAVER_RESOURCE_QUOTA_SQL_RESULT_SET_ROWS_LIMIT:100000}",
+      "sqlTextPreviewMaxLength": "${CLOUDBEAVER_RESOURCE_QUOTA_SQL_TEXT_PREVIEW_MAX_LENGTH:4096}",
+      "sqlBinaryPreviewMaxLength": "${CLOUDBEAVER_RESOURCE_QUOTA_SQL_BINARY_PREVIEW_MAX_LENGTH:261120}"
+    },
+    "defaultNavigatorSettings": {},
+    "enabledFeatures": [],
+    "enabledAuthProviders": [
+      "local"
+    ],
+    "enabledDrivers": [
+
+    ],
+    "disabledDrivers": [
+      "sqlite:sqlite_jdbc",
+      "h2:h2_embedded",
+      "h2:h2_embedded_v2",
+      "clickhouse:yandex_clickhouse",
+      "generic:duckdb_jdbc"
+    ]
+  }
+}
