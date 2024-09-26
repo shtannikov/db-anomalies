@@ -1,6 +1,7 @@
 {
   "server": {
-    "serverName": "Cloudbeaver-DB-Anomalies",
+    "serverName": "CloudBeaver-DB-Anomalies",
+    "serverURL": "http://localhost:8901",
     "expireSessionAfterPeriod": 604800000,
     "productSettings": {
       "core.localization.localization": "en",
@@ -22,16 +23,16 @@
       "backupEnabled": "${CLOUDBEAVER_DB_BACKUP_ENABLED:true}",
       "pool": {
         "minIdleConnections": "${CLOUDBEAVER_DB_MIN_IDLE_CONNECTIONS:4.0}",
+        "validationQuery": "${CLOUDBEAVER_DB_VALIDATION_QUERY:SELECT 1}",
         "maxIdleConnections": "${CLOUDBEAVER_DB_MAX_IDLE_CONNECTIONS:10.0}",
-        "maxConnections": "${CLOUDBEAVER_DB_MAX_CONNECTIONS:100.0}",
-        "validationQuery": "${CLOUDBEAVER_DB_VALIDATION_QUERY:SELECT 1}"
+        "maxConnections": "${CLOUDBEAVER_DB_MAX_CONNECTIONS:100.0}"
       }
     },
     "sm": {
       "passwordPolicy": {
-        "minLength": 0,
-        "minNumberCount": 0,
-        "minSymbolCount": 0,
+        "minLength": 1.0,
+        "minNumberCount": 0.0,
+        "minSymbolCount": 0.0,
         "requireMixedCase": false
       }
     }
@@ -57,14 +58,16 @@
       "sqlTextPreviewMaxLength": "${CLOUDBEAVER_RESOURCE_QUOTA_SQL_TEXT_PREVIEW_MAX_LENGTH:4096}",
       "sqlBinaryPreviewMaxLength": "${CLOUDBEAVER_RESOURCE_QUOTA_SQL_BINARY_PREVIEW_MAX_LENGTH:261120}"
     },
-    "defaultNavigatorSettings": {},
+    "defaultNavigatorSettings": {
+      "showOnlyEntities": true,
+      "hideFolders": true,
+      "hideVirtualModel": true
+    },
     "enabledFeatures": [],
     "enabledAuthProviders": [
       "local"
     ],
-    "enabledDrivers": [
-
-    ],
+    "enabledDrivers": [],
     "disabledDrivers": [
       "sqlite:sqlite_jdbc",
       "h2:h2_embedded",

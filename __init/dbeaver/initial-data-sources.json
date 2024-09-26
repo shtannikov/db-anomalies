@@ -1,26 +1,43 @@
 {
-  "folders": {},
-  "connections": {
-    "postgres": {
-      "provider": "postgresql",
-      "driver": "postgres-jdbc",
-      "name": "postgres",
-      "user": "test",
-      "password": "VeryStrongPassword123!",
-      "save-password": true,
-      "show-system-objects": true,
-      "read-only": false,
-      "template": false,
-      "configuration": {
-        "host": "postgres-db",
-        "port": "5432",
-        "database": "anomalies",
-        "url": "jdbc:postgresql://postgres-db:5432/anomalies",
-        "type": "dev",
-        "provider-properties": {
-          "@dbeaver-show-non-default-db@": "false"
-        }
-      }
-    }
-  }
+	"folders": {},
+	"connections": {
+		"postgres": {
+			"provider": "postgresql",
+			"driver": "postgres-jdbc",
+			"name": "postgres",
+			"save-password": true,
+			"show-system-objects": false,
+			"navigator-show-only-entities": true,
+			"navigator-hide-folders": true,
+			"navigator-hide-virtual": true,
+			"configuration": {
+				"host": "postgres-db",
+				"port": "5432",
+				"database": "anomalies",
+				"url": "jdbc:postgresql://postgres-db:5432/anomalies?user\u003dtest\u0026password\u003dVeryStrongPassword123!",
+				"configurationType": "MANUAL",
+				"type": "dev",
+				"closeIdleConnection": false,
+				"provider-properties": {
+					"@dbeaver-show-non-default-db@": "false"
+				}
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": false,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"smart-commit": false,
+			"smart-commit-recover": false,
+			"auto-close-transactions": false,
+			"close-transactions-period": 1800,
+			"auto-close-connections": false,
+			"close-connections-period": 14400
+		}
+	}
 }

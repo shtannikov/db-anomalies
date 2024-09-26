@@ -45,9 +45,13 @@
     container_name: dbeaver
     ports:
       - "8901:8978"
+    environment:
+      - CLOUDBEAVER_APP_GRANT_CONNECTIONS_ACCESS_TO_ANONYMOUS_TEAM=true
     volumes:
       - ./__init/dbeaver/initial-data-sources.json:/opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
       - ./__init/dbeaver/.cloudbeaver.runtime.json:/opt/cloudbeaver/workspace/.data/.cloudbeaver.runtime.conf
+      - ./__init/dbeaver/permissions.json:/opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources-permissions.json
+      - ./__init/dbeaver/initial-users.conf:/opt/cloudbeaver/conf/initial-data.conf
     depends_on:
       - postgres-db
       - mssql-db
