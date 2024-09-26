@@ -45,8 +45,6 @@
     container_name: dbeaver
     ports:
       - "8901:8978"
-    environment:
-      - CLOUDBEAVER_APP_GRANT_CONNECTIONS_ACCESS_TO_ANONYMOUS_TEAM=true
     volumes:
       - ./__init/dbeaver/initial-data-sources.json:/opt/cloudbeaver/workspace/GlobalConfiguration/.dbeaver/data-sources.json
       - ./__init/dbeaver/.cloudbeaver.runtime.json:/opt/cloudbeaver/workspace/.data/.cloudbeaver.runtime.conf
