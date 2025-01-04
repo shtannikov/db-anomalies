@@ -11,7 +11,9 @@ This repo provides a zero-setup playground in GitHub Codespaces. With just one c
 ### How It Works
 1. Click the button above.
 2. Codespace will launch, automatically preparing all required databases and environment configurations for you.
-3. Start experimenting with the provided SQL scripts directly in your browser
+
+   👉 It may take up to two minutes to prepare everything the first time 👈
+4. Start experimenting with the provided SQL scripts directly in your browser
 
 
 ### Repository Structure
