@@ -22,6 +22,10 @@ Each folder in this repository corresponds to a specific database anomaly. Insid
 - **Documentation**: A brief explanation of the anomaly.
 - **SQL scripts**: reproducible examples for both MS SQL and PostgreSQL.
 
+### Demo
+
+https://github.com/user-attachments/assets/33ba1f97-3549-462a-87f7-0d0cf5dd0cde
+
 ## References
 
 This repository draws inspiration from the following article, which provides excellent insights into database anomalies:
