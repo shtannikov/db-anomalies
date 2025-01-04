@@ -1,6 +1,8 @@
+-- @conn postgres-anomalies
+
 begin;
 
-	insert into accounts ("number", client, amount)
-	values (2003, 'bob', 500.00);
+	insert into accounts (id, "number", client, amount)
+	values (4, 2003, 'bob', 500.00);
 
 commit;

@@ -1,3 +1,5 @@
+-- @conn mssql-anomalies
+
 BEGIN TRANSACTION;
 
 	-- Lock state: exclusive lock acquired

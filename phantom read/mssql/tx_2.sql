@@ -1,6 +1,8 @@
+-- @conn mssql-anomalies
+
 BEGIN TRANSACTION;
 
-	INSERT INTO Accounts (Number, Client, Amount)
-	VALUES (2003, 'bob', 500.00);
+	INSERT INTO Accounts (Id, Number, Client, Amount)
+	VALUES (4, 2003, 'bob', 500.00);
 
 COMMIT;

@@ -1,3 +1,5 @@
+-- @conn postgres-anomalies
+
 begin;
 
 	-- Version management: initial version is marked as dead and new version is created

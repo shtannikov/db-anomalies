@@ -2,31 +2,26 @@
 
 The main goal of this repo is to compare MS SQL and PostgreSQL in terms of anomalies and, as a result, better understand the key differences between Locking-Based Concurrency Control and Multiversion Concurrency Control.
 
-## How To Use
+## Getting Started
 
-The docker compose provides both MS SQL and Postgres instances already prepared, so `docker-compose up` is the only thing you need to unwrap the playground. After this, use the following credentials to access your local databases:
+This repo provides a zero-setup playground in GitHub Codespaces. With just one click, you can dive into experiments without the need for manual database configuration.
 
-- MS SQL
-  - Host: `localhost:1401`
-  - Database: `anomalies`
-  - Username: `test`
-  - Password: `VeryStrongPassword123!`
-- Postgres
-  - Host: `localhost:5401`
-  - Database: `anomalies`
-  - Username: `test`
-  - Password: `VeryStrongPassword123!`
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/shtannikov/db-anomalies?quickstart=1)
 
-That's all you need to meet your first anomaly.
+### How It Works
+1. Click the button above.
+2. Codespace will launch, automatically preparing all required databases and environment configurations for you.
+3. Start experimenting with the provided SQL scripts directly in your browser
 
-When you decide to move on to the next anomaly, please restart the DB containers. They don't have attached volumes, so every restart will return them to an initial state.
-To restart you can simply stop containers and then start them again:
 
-1. `docker-compose down`
-2. `docker-compose up`
+### Repository Structure
+
+Each folder in this repository corresponds to a specific database anomaly. Inside, you'll find:
+- **Documentation**: A brief explanation of the anomaly.
+- **SQL scripts**: reproducible examples for both MS SQL and PostgreSQL.
 
 ## References
 
-The main ideas for this repo were taken from this amazing article:
+This repository draws inspiration from the following article, which provides excellent insights into database anomalies:
 
 - https://postgrespro.com/blog/pgsql/5967856

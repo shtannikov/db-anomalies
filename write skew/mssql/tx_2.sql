@@ -1,3 +1,5 @@
+-- @conn mssql-anomalies
+
 BEGIN TRANSACTION;
 
 	UPDATE Accounts 
@@ -7,7 +9,7 @@ BEGIN TRANSACTION;
 			SELECT 1 FROM Accounts a
 			WHERE a.Client = 'bob'
 			GROUP BY a.Client
-			HAVING SUM(amount) >= 600
+			HAVING SUM(Amount) >= 600
 		);
 
 COMMIT;
