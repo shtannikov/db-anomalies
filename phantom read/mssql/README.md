@@ -1,3 +1,7 @@
+## Scenario
+
+[../README.md](../README.md)
+
 ## List of isolations with this anomaly
 
 - READ UNCOMMITTED
@@ -15,4 +19,4 @@ In order to block INSERT statements from other transactions, SELECT should acqui
 
 - SELECT locks only selected rows in REPEATABLE READ
 
-- SELECT is lockfree in SNAPSHOT, and even though a SNAPSHOT transaction sees only those versions of existing records that were created before the transaction started, it still can see new records inserted by concurrent committed transactions.
+- SELECT is lockfree in SNAPSHOT, and even though a SNAPSHOT transaction sees only record versions created before the transaction started, it **still** can see new records inserted by concurrent committed transactions.

@@ -1,3 +1,5 @@
+-- @conn postgres-anomalies
+
 begin;
 
 	update accounts

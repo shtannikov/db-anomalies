@@ -1,0 +1,54 @@
+{
+  "dockerComposeFile": ["docker-compose.yml"],
+  "service": "devcontainer",
+  "workspaceFolder": "/workspace",
+  "hostRequirements": {
+   "cpus": 4,
+   "memory": "16gb",
+   "storage": "32gb"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "mtxr.sqltools",
+        "mtxr.sqltools-driver-mssql",
+        "mtxr.sqltools-driver-pg"
+      ],
+      "settings": {
+        "sqltools.connections": [
+            {
+                "name": "postgres-anomalies",
+                "server": "postgres-anomalies",
+                "port": 5432,
+                "driver": "PostgreSQL",
+                "database": "anomalies",
+                "username": "test",
+                "password": "VeryStrongPassword123!"
+            },
+            {
+                "name": "mssql-anomalies",
+                "server": "mssql-anomalies",
+                "port": 1433,
+                "driver": "MSSQL",
+                "database": "anomalies",
+                "username": "test",
+                "password": "VeryStrongPassword123!"
+            }
+        ],
+        "sqltools.autoOpenSessionFiles": false,
+        "sqltools.results.location": "current",
+        "[sql]": {
+          "editor.formatOnSave": false,
+          "editor.formatOnPaste": false
+        },
+        "workbench.editorAssociations": {   
+            "*.md": "vscode.markdown.preview.editor"
+        },
+        "workbench.editor.enablePreview": false,
+        "window.autoDetectColorScheme": true,
+        "workbench.preferredLightColorTheme": "GitHub Light Default",
+        "workbench.preferredDarkColorTheme": "GitHub Dark Default"
+      }
+    }
+  }
+}

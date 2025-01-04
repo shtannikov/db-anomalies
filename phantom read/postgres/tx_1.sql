@@ -1,9 +1,14 @@
+-- @conn postgres-anomalies
+
 begin;
 
 	-- Version management: snapshot with all existing Bob's accounts is created,
 	--							but it will be removed right after the statement is executed
 	-- The result: 2
-	select count(*) from accounts a
+	select
+		'State before the concurrent insert in tx_2' as comment,
+		count(*) as account_counts
+	from accounts a
 	where a.client = 'bob';
 
 	select pg_sleep(10);
@@ -11,7 +16,12 @@ begin;
 	-- Version management: new snapshot with all existing Bob's accounts is created,
 	--							and it has +1 account now, since tx_2 is already completed
 	-- The result: 3
-	select count(*) from accounts a
+	select
+		'State after the concurrent insert in tx_2' as comment,
+		count(*) as account_counts
+	from accounts a
 	where a.client = 'bob';
+
+	select 'Do not forget to restore the DB before switching to next scenarios (__restore/postgres.sql)' as reminder;
 
 end;

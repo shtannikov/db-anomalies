@@ -1,3 +1,5 @@
+-- @conn mssql-anomalies
+
 SET TRANSACTION ISOLATION LEVEL SNAPSHOT;
 
 BEGIN TRANSACTION;
@@ -6,7 +8,11 @@ BEGIN TRANSACTION;
 	-- The result: $100 in account with Id=2
 	-- Important to note: without this SELECT statement Write Skew anomaly won't occur!
 	--							MS SQL has an interesting implementation of UPDATE conditions for SNAPSHOT isolation.
-	SELECT a.Id, a.Amount FROM Accounts a
+	SELECT
+		'State before updates' as Comment,
+		a.Id,
+		a.Amount
+	FROM Accounts a
 	WHERE a.Client = 'bob';
 
 	WAITFOR DELAY '00:00:10';
@@ -21,7 +27,16 @@ BEGIN TRANSACTION;
 			SELECT 1 FROM Accounts a
 			WHERE a.Client = 'bob'
 			GROUP BY a.Client
-			HAVING SUM(amount) >= 600
+			HAVING SUM(Amount) >= 600
 		);
-	
+
+	SELECT
+		'State after updates in both tx_1 and tx_2' as Comment,
+		a.Id,
+		a.Amount
+	FROM Accounts a
+	WHERE a.Client = 'bob';
+
+	SELECT 'Do not forget to restore the DB before switching to next scenarios (__restore/mssql.sql)' as Reminder;
+
 COMMIT;
